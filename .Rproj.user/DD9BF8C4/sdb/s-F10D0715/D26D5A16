@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(phylofactor)\nfls <- list.files('R/')\nsapply(paste('R/',fls,sep=''),source)\n\nset.seed(1)\ntr <- rtree(10)\ntr$tip.label <- gsub('t','s',tr$tip.label)\nplot(tr)\nnodelabels()\n\nnodebank <- makeNodeMap(tr)\n\nt_8=speciate(tr,nodebank,which(tr$tip.label=='s3'))\nt_8$tree <- evolve(t_8$tree,dt=0.1)\n\n\nt_5=speciate(t_8$tree,t_8$nodebank,5)\nt_5$tree <- evolve(t_5$tree,dt=0.1)\n\npar(mfrow=c(1,3))\nplot(tr)\nnodelabels()\nplot(t_8$tree)\nnodelabels()\nplot(t_5$tree)\nnodelabels()\n",
+    "created" : 1578503509579.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3853312460",
+    "id" : "D26D5A16",
+    "lastKnownWriteTime" : 1578516816,
+    "last_content_update" : 1578516816322,
+    "path" : "~/phylodynamics/scripts/testing_speciate.R",
+    "project_path" : "scripts/testing_speciate.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 11,
+    "source_on_save" : true,
+    "source_window" : "",
+    "type" : "r_source"
+}
